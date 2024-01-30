@@ -7,7 +7,22 @@ const AddUser = () => {
         const address = form.address.value;
         const email = form.email.value;
         const user = {name, address, email};
-        console.log(user)
+        // send user data to server
+        fetch('http://localhost:5000/users',{
+            method: 'POST',
+            headers:{
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+
+        })
+        .then(res =>res.json())
+        .then(data =>{
+            if(data.acknowledged){
+                alert('User Added Successfully');
+                form.reset();
+            }
+        })
     }
 
   return (
