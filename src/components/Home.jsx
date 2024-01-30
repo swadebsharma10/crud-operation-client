@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 
 const Home = () => {
@@ -52,7 +52,8 @@ const Home = () => {
                 <td>{user.address}</td>
                 <td>{user.email}</td>
                 <td>
-                <button onClick={()=>handleDelete(user)} className="btn btn-sm btn-warning">Delete</button>
+                <button onClick={()=>handleDelete(user)} className="btn btn-xs btn-warning">Delete</button>
+                <Link to={`/update-user/${user._id}`}><button className="btn btn-xs btn-primary">Update</button></Link>
                 </td>
               </tr>
             ))
